@@ -11,6 +11,8 @@ TO DO:
 - [ ] Repeat all the experiments and check that metrics are the same as provided with the installed requirements
 - [ ] 
 
+# First steps
+
 ## Installation
 
 To install the python packages, create a new virtual environment and run:
@@ -40,6 +42,14 @@ Once downloaded, put them in your working directory, in what follows, we will re
 * \<WLASL100_dir> : Root Directory where we downloaded the WLASL dataset
 * \<IPNHand_dir> : Root Directory where we downloaded the IPNHand dataset
 
+
+# Pre-processing Inputs
+
+## Download pre-processed samples of WLASL and IPNHand
+To download the original files employed to train the models with the landmarks extracted from the files, click on the following link (~1GB): 
+- [Inputs](https://drive.upm.es/s/AsErgLlRn5WJ0zM)
+
+If you prefer to extract your own features, follow the steps below (notice that in some cases you will need to substitute some of the paths and being working int he correct virtual environment).
 
 ## Feature Extraction - Pre-processing
 
@@ -109,8 +119,15 @@ Compact the landmarks into one single file for all the videos
 
 
 
-## Arquitectures
+# Arquitectures/Models
 ![ar](data/resources/imgs/arquitectures.png)
+
+## Checkpoints of pre-trained models:
+To download the pre-trained models, click on the following link (~9GB): 
+- [Checkpoints of pre-trained models](https://drive.upm.es/s/Ng7NBRnvWgBAzvU)
+
+If you prefer to train and evaluate your own models, follow the steps below (notice that in some cases you will need to substitute some of the paths and being working int he correct virtual environment).
+
 
 ## Training Models with WLASL
 ### 0. Original Baseline SPOTER with VisionAPI data:
