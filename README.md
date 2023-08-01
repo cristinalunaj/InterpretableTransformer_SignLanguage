@@ -270,8 +270,10 @@ IEEE format:
 ### Contact:
 If you have any question, or you find a bug in the code, please contact us at: 
 
-<cristina.lunaj@upm.es>
-<manuel.gilmartin@upm.es>
+- [cristina.lunaj@upm.es](cristina.lunaj@upm.es)
+
+- [manuel.gilmartin@upm.es](manuel.gilmartin@upm.es)
+
 
 ### Acknowledgment 
 We would like to thanks to the authors of [SPOTER](https://github.com/matyasbohacek/spoter)
