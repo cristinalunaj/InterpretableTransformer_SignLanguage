@@ -210,7 +210,7 @@ def train(args):
 
         if val_loader:
             slrt_model.train(False)
-            _, _, val_acc = evaluate(slrt_model, val_loader, device, num_classes=args.num_classes)
+            _, _, val_acc = evaluate(slrt_model, val_loader, device) #num_classes=args.num_classes
             slrt_model.train(True)
             val_accs.append(val_acc)
 
