@@ -245,12 +245,6 @@ Training transformer with Class Query at the input of the decoder. Similar to SP
 
 ## FAQs
 
-### Trained models:
-To download the weights of the trained models, click on this linkB (~XGB):
-
-https://..
-
-
 
 ### License:
 This code is leveraged under MIT License, but the datasets employed may have a different license.
