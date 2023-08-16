@@ -12,6 +12,7 @@ from src.dataloader.czech_slr_dataset import CzechSLRDataset
 from src.models.spoter_model_original import SPOTER, SPOTERnoPE
 from src.models.BaselineTransformerClassification import BaselineTransformerClassification
 from src.models.ExplainabTransformer import ExplainabTransformerwQuery, ExplainabTransformerwSequence
+from src.utils.args_utils import str2bool
 
 
 
@@ -110,7 +111,7 @@ def get_default_args():
     parser.add_argument("--testing_set_path", type=str, default="", help="Path to the testing dataset CSV file")
 
     # Landmarks library:
-    parser.add_argument("--mediaPipe", type=bool, default=True,
+    parser.add_argument("--mediaPipe", type=str, default='True',
                         help="Determines whether the landmarks were generated using MediaPipe[True] or using VisionAPI[False]")
     parser.add_argument("--model2use", type=str,
                         choices=["originalSpoterPE", "originalSpoterNOPE", "baselineTransformer",
@@ -119,7 +120,7 @@ def get_default_args():
                         help='Type of model to select for the training. choices=["originalSpoterPE", '
                              '"originalSpoterNOPE", "baselineTransformer","ownModelwquery", "ownModelwseq"]')
 
-    parser.add_argument("--namePE", type=str, default='wEnc',
+    parser.add_argument("--namePE", type=str, default=None,
                         help="name of the positional Encodign layer (For the Query-Class version the name is: 'wEnc', for spoter is 'pos')")
 
     # Checkpointing
@@ -141,7 +142,7 @@ def test(args):
     g.manual_seed(args.seed)
     normalize_flag = False
     augmentation_flag = False
-    mediaPipe = args.mediaPipe
+    mediaPipe = str2bool(args.mediaPipe)
     n_landmarks = int(args.hidden_dim/2) # 54 21 42 21 75 #21 # 54 42 21
     model2use = args.model2use # originalSpoter baselineTransformer ownModelwquery ownModelwseq
     namePE = args.namePE  # pos wEnc
@@ -178,13 +179,14 @@ def test(args):
     slrt_model.train(False)
     getNparams(slrt_model)
     dataset_name = "IPNHand" if("IPNHand" in args.load_checkpoint) else "WLASL"
-    check_weights(slrt_model, args.load_checkpoint.split("/", -2)[-2], namePE, dataset_name)
+    if(namePE!=None):
+        check_weights(slrt_model, args.load_checkpoint.split("/", -2)[-2], namePE, dataset_name)
 
     slrt_model.to(device)
 
     ######### PREPARE DATA FOR BEING EVALUATED BY THE NW ################
     print( " #### EVALUATING ... ####")
-    test_set = CzechSLRDataset(args.testing_set_path, mediapipe=args.mediaPipe, n_landmarks=n_landmarks)
+    test_set = CzechSLRDataset(args.testing_set_path, mediapipe=mediaPipe, n_landmarks=n_landmarks)
     test_loader = DataLoader(test_set, shuffle=False, generator=g)
 
     pred_correct, pred_all, eval_acc = evaluate(slrt_model, test_loader, device, print_stats=True)

@@ -136,7 +136,7 @@ If you prefer to train and evaluate your own models, follow the steps below (not
     --training_set_path ../InterpretableTransformer_SignLanguage/data/inputs/VisionAPI_WLASL100/WLASL100_train_25fps.csv
     --validation_set_path ../InterpretableTransformer_SignLanguage/data/inputs/VisionAPI_WLASL100/WLASL100_val_25fps.csv
     --testing_set_path ../InterpretableTransformer_SignLanguage/data/inputs/VisionAPI_WLASL100/WLASL100_test_25fps.csv
-    --hidden_dim 85 --n_heads 9 --model2use originalSpoterPE
+    --hidden_dim 85 --n_heads 9 --model2use originalSpoterPE --mediaPipe False
 
 
 ### 1. Original Baseline SPOTER with MediaPipe data (Hands + Pose):
@@ -146,7 +146,7 @@ If you prefer to train and evaluate your own models, follow the steps below (not
     --training_set_path ../InterpretableTransformer_SignLanguage/data/inputs/WLASL100/MediaPipe_data/x-y/WLASL100_train.csv
     --validation_set_path ../InterpretableTransformer_SignLanguage/data/inputs/WLASL100/MediaPipe_data/x-y/WLASL100_val.csv 
     --testing_set_path ../InterpretableTransformer_SignLanguage/data/inputs/WLASL100/MediaPipe_data/x-y/WLASL100_test.csv 
-    --hidden_dim 150 --n_heads 10 --model2use originalSpoterPE --mediaPipe
+    --hidden_dim 150 --n_heads 10 --model2use originalSpoterPE --mediaPipe True
 
 
 
@@ -157,7 +157,7 @@ If you prefer to train and evaluate your own models, follow the steps below (not
     --training_set_path ../InterpretableTransformer_SignLanguage/data/inputs/WLASL100/MediaPipe_data/x-y/WLASL100_train.csv
     --validation_set_path ../InterpretableTransformer_SignLanguage/data/inputs/WLASL100/MediaPipe_data/x-y/WLASL100_val.csv 
     --testing_set_path ../InterpretableTransformer_SignLanguage/data/inputs/WLASL100/MediaPipe_data/x-y/WLASL100_test.csv 
-    --hidden_dim 150 --n_heads 10 --model2use originalSpoterNOPE --mediaPipe
+    --hidden_dim 150 --n_heads 10 --model2use originalSpoterNOPE --mediaPipe True
 
 
 ### 3. Explainable Transformer -Class Query- with MediaPipe data (Hands + Pose) (No Positional Encoding):
@@ -169,7 +169,7 @@ Training transformer with Class Query at the input of the decoder. Similar to SP
     --training_set_path ../InterpretableTransformer_SignLanguage/data/inputs/WLASL100/MediaPipe_data/x-y/WLASL100_train.csv
     --validation_set_path ../InterpretableTransformer_SignLanguage/data/inputs/WLASL100/MediaPipe_data/x-y/WLASL100_val.csv 
     --testing_set_path ../InterpretableTransformer_SignLanguage/data/inputs/WLASL100/MediaPipe_data/x-y/WLASL100_test.csv 
-    --hidden_dim 150 --n_heads 10 --model2use ownModelwquery --mediaPipe
+    --hidden_dim 150 --n_heads 10 --model2use ownModelwquery --mediaPipe True
 
 
 
@@ -184,16 +184,16 @@ Training the top architecture (or more explainable)
      --training_set_path ../InterpretableTransformer_SignLanguage/data/inputs/IPNHand/MediaPipe_data/x-y/IPNHand_train.csv
     --validation_set_path ../InterpretableTransformer_SignLanguage/data/inputs/IPNHand/MediaPipe_data/x-y/IPNHand_test.csv 
     --testing_set_path ../InterpretableTransformer_SignLanguage/data/inputs/IPNHand/MediaPipe_data/x-y/IPNHand_test.csv 
-    --hidden_dim 42 --n_heads 7 --num_classes 12 --model2use originalSpoterPE --mediaPipe
+    --hidden_dim 42 --n_heads 7 --num_classes 12 --model2use originalSpoterPE --mediaPipe True
 
 ### 2. Original Baseline SPOTER with MediaPipe data (Hand) - WITHOUT Positional Encoding:
 
-    python3 train.py --experiment_name ...
-    --epochs 350 --lr 0.001
-    --training_set_path ../InterpretableTransformer_SignLanguage/data/inputs/IPNHand/MediaPipe_data/x-y/IPNHand_train.csv
-    --validation_set_path ../InterpretableTransformer_SignLanguage/data/inputs/IPNHand/MediaPipe_data/x-y/IPNHand_test.csv 
-    --testing_set_path ../InterpretableTransformer_SignLanguage/data/inputs/IPNHand/MediaPipe_data/x-y/IPNHand_test.csv 
-    --hidden_dim 42 --n_heads 7 --num_classes 12 --model2use originalSpoterNOPE --mediaPipe
+    python3 train.py --experiment_name 1IPNHand_SPOTERnoPE_mediaPipeH 
+    --epochs 350 --lr 0.001 
+    --training_set_path ../data/inputs/IPNHand/MediaPipe_data/x-y/IPNHand_train.csv 
+    --validation_set_path ../data/inputs/IPNHand/MediaPipe_data/x-y/IPNHand_test.csv 
+    --testing_set_path ../data/inputs/IPNHand/MediaPipe_data/x-y/IPNHand_test.csv 
+    --hidden_dim 42 --n_heads 7 --num_classes 13 --model2use originalSpoterNOPE --mediaPipe True
 
 ### 3. Explainable Transformer - Query Class - with MediaPipe data (Hands + Pose) (No Positional Encoding):
 
@@ -204,7 +204,7 @@ Training transformer with Class Query at the input of the decoder. Similar to SP
     --training_set_path ../InterpretableTransformer_SignLanguage/data/inputs/IPNHand/MediaPipe_data/x-y/IPNHand_train.csv
     --validation_set_path ../InterpretableTransformer_SignLanguage/data/inputs/IPNHand/MediaPipe_data/x-y/IPNHand_test.csv 
     --testing_set_path ../InterpretableTransformer_SignLanguage/data/inputs/IPNHand/MediaPipe_data/x-y/IPNHand_test.csv 
-    --hidden_dim 42 --n_heads 7 --num_classes 12 --model2use ownModelwquery --mediaPipe
+    --hidden_dim 42 --n_heads 7 --num_classes 12 --model2use ownModelwquery --mediaPipe True
 
 
 
@@ -221,26 +221,64 @@ Training transformer with Class Query at the input of the decoder. Similar to SP
 
 ### 1. WLASL - Explainable Transformer
 
-     python3 test.py --experiment_name test_WLASL100_Spoter_noNorm_noAugm_mediaPipe_HandsAndPoseV3NoPosEmbwQuery_None
+ - Model with acc: 46.90%
+
+        python3 test.py --experiment_name test_WLASL100_Spoter_noNorm_noAugm_mediaPipe_HandsAndPoseV3_None
+        --testing_set_path ../data/inputs/VisionAPI_WLASL100/WLASL100_test_25fps.csv 
+        --hidden_dim 108 --n_heads 9 --model2use originalSpoterPE --mediaPipe False --namePE None 
+        --load_checkpoint ../src/out-checkpoints/0WLASL100_SPOTER_VisionAPI/test_WLASL100_Spoter_noNorm_noAugm_SPOTERlandmarks/checkpoint_t_15.pth
+        
+       
+
+
+ - Model with acc: 60.08%
+
+        python3 test.py --experiment_name test_WLASL100_Spoter_noNorm_noAugm_mediaPipe_HandsAndPoseV3_None
+        --testing_set_path ../data/inputs/WLASL100/MediaPipe_data/x-y/WLASL100_test.csv 
+        --hidden_dim 150 --n_heads 10 --model2use originalSpoterPE --mediaPipe True --namePE pos 
+        --load_checkpoint ../src/out-checkpoints/1WLASL100_SPOTER_mediaPipeHP/test_WLASL100_Spoter_noNorm_noAugm_mediaPipe_HandsAndPoseV3/checkpoint_v_18.pth
+        
+       
+    
+ - Model with acc: 60.08%
+
+        python3 test.py --experiment_name test_WLASL100_Spoter_noNorm_noAugm_mediaPipe_HandsAndPoseV3NoPosEmb_None
+        --testing_set_path ../data/inputs/WLASL100/MediaPipe_data/x-y/WLASL100_test.csv 
+        --hidden_dim 150 --n_heads 10 --model2use originalSpoterNOPE --mediaPipe True
+        --load_checkpoint ../src/out-checkpoints/2WLASL100_SPOTERnoPE_mediaPipeHP/test_WLASL100_Spoter_noNorm_noAugm_mediaPipe_HandsAndPoseV3NoPosEmb/checkpoint_t_23.pth
+        
+ - Model with acc: 62.79%
+
+     
+    python3 test.py --experiment_name test_WLASL100_Spoter_noNorm_noAugm_mediaPipe_HandsAndPoseV3NoPosEmbwQuery_None
     --testing_set_path ../InterpretableTransformer_SignLanguage/data/inputs/WLASL100/MediaPipe_data/x-y/WLASL100_test.csv 
     --hidden_dim 150 --n_heads 10 --model2use ownModelwquery --mediaPipe True --namePE wEnc 
     --load_checkpoint ../InterpretableTransformer_SignLanguage/src/out-checkpoints/3WLASL100_SiLT_QueryClass_MediaPipe/test_WLASL100_Spoter_noNorm_noAugm_mediaPipe_HandsAndPoseV3NoPosEmbwQuery/checkpoint_t_19.pth
     
 
+ 
+
 ### 2. IPNHand -  Explainable Transformer
 
+- Model with acc: 86.10% 
+
       python3 test.py --experiment_name test_IPNHand_Spoter_noNorm_noAugm_mediaPipe_HandsNoPosEmbwQuery13Classes
-        --num_classes 13
-        --testing_set_path ../data/inputs/IPNHand/MediaPipe_data/x-y/IPNHand_test.csv 
-        --hidden_dim 42 --n_heads 7 --model2use ownModelwquery --mediaPipe True --namePE wEnc 
-        --load_checkpoint out-checkpoints/2IPNHand_SiLT_QueryClass_MediaPipe/test_IPNHand_Spoter_noNorm_noAugm_mediaPipe_HandsNoPosEmbwQuery13Classes/checkpoint_v_13.pth
+      --num_classes 13
+      --testing_set_path ../data/inputs/IPNHand/MediaPipe_data/x-y/IPNHand_test.csv 
+      --hidden_dim 42 --n_heads 7 --model2use ownModelwquery --mediaPipe True --namePE wEnc 
+      --load_checkpoint out-checkpoints/2IPNHand_SiLT_QueryClass_MediaPipe/test_IPNHand_Spoter_noNorm_noAugm_mediaPipe_HandsNoPosEmbwQuery13Classes/checkpoint_v_13.pth
 
 
-    python3 test.py --experiment_name test_IPNHand_Spoter_noNorm_noAugm_mediaPipe_HandswithPE13classes
-        --num_classes 13
-        --testing_set_path ../data/inputs/IPNHand/MediaPipe_data/x-y/IPNHand_test.csv 
-        --hidden_dim 42 --n_heads 7 --model2use originalSpoterPE --mediaPipe True --namePE pos 
-        --load_checkpoint out-checkpoints/0IPNHand_SPOTER_mediaPipeH/test_IPNHand_Spoter_noNorm_noAugm_mediaPipe_HandswithPE13classes/checkpoint_v_7.pth
+ - Model with acc: 86.65%
+
+
+ - Model with acc: 86.56%
+      
+         python3 test.py --experiment_name test_IPNHand_Spoter_noNorm_noAugm_mediaPipe_HandswithPE13classes
+          --num_classes 13
+          --testing_set_path ../data/inputs/IPNHand/MediaPipe_data/x-y/IPNHand_test.csv 
+          --hidden_dim 42 --n_heads 7 --model2use originalSpoterPE --mediaPipe True --namePE pos 
+          --load_checkpoint out-checkpoints/0IPNHand_SPOTER_mediaPipeH/test_IPNHand_Spoter_noNorm_noAugm_mediaPipe_HandswithPE13classes/checkpoint_v_7.pth
 
 
 ## FAQs

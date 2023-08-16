@@ -25,6 +25,7 @@ from src.models.spoter_model_original import SPOTER, SPOTERnoPE
 from src.models.BaselineTransformerClassification import BaselineTransformerClassification
 from src.models.ExplainabTransformer import ExplainabTransformerwQuery, ExplainabTransformerwSequence
 from src.augmentations.gaussian_noise import GaussianNoise
+from src.utils.args_utils import str2bool
 
 
 
@@ -60,7 +61,7 @@ def get_default_args():
                              " to 'split-from-train'")
     parser.add_argument("--validation_set_path", type=str, default="", help="Path to the validation dataset CSV file")
     # Landmarks library:
-    parser.add_argument("--mediaPipe", type=bool, default=True,
+    parser.add_argument("--mediaPipe", type=str, default='True',
                         help="Determines whether the landmarks were generated using MediaPipe[True] or using VisionAPI[False]")
 
     # Training hyperparameters
@@ -103,6 +104,7 @@ def train(args):
     g = torch.Generator()
     g.manual_seed(args.seed)
     n_landmarks = int(args.hidden_dim/2) # 54 21 42 21 75
+    mediaPipe = str2bool(args.mediaPipe)
 
     # Set the output format to print into the console and save into LOG file
     logging.basicConfig(
@@ -153,11 +155,11 @@ def train(args):
 
     # Training set
     transform = transforms.Compose([GaussianNoise(args.gaussian_mean, args.gaussian_std)])
-    train_set = CzechSLRDataset(args.training_set_path, transform=transform, mediapipe=args.mediaPipe, n_landmarks=n_landmarks)
+    train_set = CzechSLRDataset(args.training_set_path, transform=transform, mediapipe=mediaPipe, n_landmarks=n_landmarks)
 
     # Validation set
     if args.validation_set == "from-file":
-        val_set = CzechSLRDataset(args.validation_set_path, mediapipe=args.mediaPipe, n_landmarks=n_landmarks)
+        val_set = CzechSLRDataset(args.validation_set_path, mediapipe=mediaPipe, n_landmarks=n_landmarks)
         val_loader = DataLoader(val_set, shuffle=True, generator=g)
 
     elif args.validation_set == "split-from-train":
@@ -173,7 +175,7 @@ def train(args):
 
     # Testing set
     if args.testing_set_path:
-        test_set = CzechSLRDataset(args.testing_set_path, mediapipe=args.mediaPipe, n_landmarks=n_landmarks)
+        test_set = CzechSLRDataset(args.testing_set_path, mediapipe=mediaPipe, n_landmarks=n_landmarks)
         test_loader = DataLoader(test_set, shuffle=True, generator=g)
 
     else:
