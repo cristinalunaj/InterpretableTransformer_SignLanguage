@@ -4,12 +4,10 @@ Repository with the code of the paper: [Interpreting Sign Language Recognition u
 (REPOSITORY UNDER DEVELOPMENT...)
 TO DO:
 - [ ] CHECK PRE-PROCESSING & REPEAT IT
-- [ ] UPLOAD checkpoints & inputs (UPM-Drive)
-- [ ] Check Landmark Extraction FOR IPNHand
+---
 - [ ] Check compatibilities btw requirements of mediapipe & models of pytorch... > currently in different venvs
-- [ ] Add mediapipe results for running models in an additional link???
 - [ ] Repeat all the experiments and check that metrics are the same as provided with the installed requirements
-- [ ] 
+
 
 # First steps
 
@@ -82,6 +80,7 @@ To extract the landmarks, we employed [MediaPipe library](https://google.github.
     python3 src/preProcessing/HandsPoseLandmarksExtractor.py
     --frames_path WLASL100_dir/raw_frames_WLASL2000
     --labels_path WLASL100_dir/WLASL100_v0.3.csv
+    --out_dir WLASL100_dir/landmarks
 
     
 
@@ -254,8 +253,7 @@ https://..
 
 
 ### License:
-This code is leveraged under MIT License, but the datasets employed may have a different license. 
-
+This code is leveraged under MIT License, but the datasets employed may have a different license.
 The user of the pre-trained models is responsible for checking these licenses and using them under their own responsibility and risk.
 
 
