@@ -1,11 +1,6 @@
 # InterpretableTransformer_SignLanguage
 Repository with the code of the paper: [Interpreting Sign Language Recognition using Transformers and MediaPipe Landmarks](...)
 
-(REPOSITORY UNDER DEVELOPMENT)
-
-- [ ] CHECK PRE-PROCESSING & REPEAT IT
-- [ ] Check compatibilities btw requirements of mediapipe & models of pytorch... > currently in different venvs
-- [ ] Repeat all the experiments and check that metrics are the same as provided with the installed requirements
 
 ---
 
