@@ -1,5 +1,5 @@
 # InterpretableTransformer_SignLanguage
-Repository with the code of the paper: [Interpreting Sign Language Recognition using Transformers and MediaPipe Landmarks](...)
+Repository with the code of the paper: [Interpreting Sign Language Recognition using Transformers and MediaPipe Landmarks](https://dl.acm.org/doi/10.1145/3577190.3614143)
 
 
 ---
@@ -287,10 +287,26 @@ The user of the pre-trained models is responsible for checking these licenses an
 ### Citation
 If you use the code of this work or the generated models, please cite the following paper:
 
-IEEE format:
 
-...
-(You can find more citation formats in the ...)
+@inproceedings{10.1145/3577190.3614143,
+author = {Luna-Jim\'{e}nez, Cristina and Gil-Mart\'{\i}n, Manuel and Kleinlein, Ricardo and San-Segundo, Rub\'{e}n and Fern\'{a}ndez-Mart\'{\i}nez, Fernando},
+title = {Interpreting Sign Language Recognition using Transformers and MediaPipe Landmarks},
+year = {2023},
+isbn = {9798400700552},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3577190.3614143},
+doi = {10.1145/3577190.3614143},
+abstract = {Sign Language Recognition (SLR) is a challenging task that aims to bridge the communication gap between the deaf and hearing communities. In recent years, deep learning-based approaches have shown promising results in SLR. However, the lack of interpretability remains a significant challenge. In this paper, we seek to understand which hand and pose MediaPipe Landmarks are deemed the most important for prediction as estimated by a Transformer model. We propose to embed a learnable array of parameters into the model that performs an element-wise multiplication of the inputs. This learned array highlights the most informative input features that contributed to solve the recognition task. Resulting in a human-interpretable vector that lets us interpret the model predictions. We evaluate our approach on public datasets called WLASL100 (SRL) and IPNHand (gesture recognition). We believe that the insights gained in this way could be exploited for the development of more efficient SLR pipelines.},
+booktitle = {Proceedings of the 25th International Conference on Multimodal Interaction},
+pages = {373–377},
+numpages = {5},
+keywords = {Human-Computer Interaction, Interpretability, MediaPipe Landmarks, Sign Language Recognition, Transformers},
+location = {Paris, France},
+series = {ICMI '23}
+}
+
+
 
 ### Contact:
 If you have any question, or you find a bug in the code, please contact us at: 
